@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-    const [forecasts, setForecasts] = useState();
+    const [parks, setParks] = useState();
 
     useEffect(() => {
-        populateWeatherData();
+        populateParkData();
     }, []);
 
-    const contents = forecasts === undefined
+    const contents = parks === undefined
         ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
         : <table className="table table-striped" aria-labelledby="tableLabel">
             <thead>
@@ -20,12 +20,12 @@ function App() {
                 </tr>
             </thead>
             <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
+                {parks.map(parks =>
+                    <tr key={parks.parkID}>
+                        <td>{parks.parkName}</td>
+                        <td>{parks.temperatureC}</td>
+                        <td>{parks.temperatureF}</td>
+                        <td>{parks.summary}</td>
                     </tr>
                 )}
             </tbody>
@@ -39,11 +39,11 @@ function App() {
         </div>
     );
     
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
+    async function populateParkData() {
+        const response = await fetch('park');
         if (response.ok) {
             const data = await response.json();
-            setForecasts(data);
+            setParks(data);
         }
     }
 }
