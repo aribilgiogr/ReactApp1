@@ -13,19 +13,15 @@ function App() {
         : <table className="table table-striped" aria-labelledby="tableLabel">
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
+                    <th>ID</th>
+                    <th>Otopark</th>
                 </tr>
             </thead>
             <tbody>
                 {parks.map(parks =>
                     <tr key={parks.parkID}>
+                        <td>{parks.parkID}</td>
                         <td>{parks.parkName}</td>
-                        <td>{parks.temperatureC}</td>
-                        <td>{parks.temperatureF}</td>
-                        <td>{parks.summary}</td>
                     </tr>
                 )}
             </tbody>

@@ -2,6 +2,7 @@
 
 namespace ReactApp1.Server.Models
 {
+
     //https://api.ibb.gov.tr/ispark/Park
     public class ParkListModel
     {
@@ -18,6 +19,8 @@ namespace ReactApp1.Server.Models
         public string ParkType { get; set; }
         public int FreeTime { get; set; }
         public string District { get; set; }
+
+        [JsonConverter(typeof(NumToBool))]
         public bool IsOpen { get; set; }
     }
 
